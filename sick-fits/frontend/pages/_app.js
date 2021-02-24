@@ -13,16 +13,13 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-const MyApp = ({ Component, pageProps, apollo }) => {
-  console.log(apollo);
-  return (
-    <ApolloProvider client={apollo}>
-      <Page>
-        <Component {...pageProps} />
-      </Page>
-    </ApolloProvider>
-  );
-};
+const MyApp = ({ Component, pageProps, apollo }) => (
+  <ApolloProvider client={apollo}>
+    <Page>
+      <Component {...pageProps} />
+    </Page>
+  </ApolloProvider>
+);
 
 // if any of the components needs initialProps to start with
 MyApp.getInitialProps = async function ({ Component, ctx }) {
