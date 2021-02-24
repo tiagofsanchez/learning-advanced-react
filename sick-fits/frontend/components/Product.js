@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
+import formatMoney from '../lib/formatMoney';
 
 const Product = ({ product }) => (
   <ItemStyles>
@@ -9,8 +11,14 @@ const Product = ({ product }) => (
     <Title>
       <Link href={`/product/${product.id}`}>{product.name}</Link>
     </Title>
-    <PriceTag>{product.price}</PriceTag>
+    <PriceTag>{formatMoney(product.price)}</PriceTag>
+    <p>{product.description}</p>
+    {/* TODO: add buttons to do edit and delete item */}
   </ItemStyles>
 );
+
+Product.propTypes = {
+  product: PropTypes.object,
+};
 
 export default Product;

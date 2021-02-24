@@ -32,9 +32,6 @@ a {
     text-decoration: none; 
     color: var(--black);
 }
-a:hover { 
- color: var(--red);   
- border-bottom: 2px solid var(--red);
 }
 button{ 
     font-family: ''

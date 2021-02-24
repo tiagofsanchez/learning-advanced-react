@@ -5,29 +5,32 @@ import styled from 'styled-components';
 import Nav from './Nav';
 
 const Logo = styled.h1`
+  font-size: 3rem;
+  margin-left: 2rem;
+  position: relative;
+  z-index: 2;
   background: var(--red);
-  font-size: 2rem;
-  padding: 0px 20px;
-  border-radius: 8px;
-  margin: auto;
+  transform: skew(-7deg);
   a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
+    padding: 0.5rem 1rem;
   }
-  a:hover {
-    color: white;
+  @media (max-width: 700px) {
+    font-size: 20px;
+    padding: 0 10px;
   }
 `;
 
 const HeaderStyles = styled.header`
-  margin: 20px;
   .bar {
     display: grid;
-    grid-template-columns: auto;
-    margin: 20px 0px;
+    grid-template-columns: auto 1fr;
+    justify-content: space-between;
   }
   .sub-bar {
+    margin: 0px 20px;
     border-bottom: 1px solid var(--red, black);
   }
 `;
@@ -36,13 +39,13 @@ const Header = () => (
   <HeaderStyles>
     <div className="bar">
       <Logo>
-        <Link href="/">photos bazar 📸</Link>
+        <Link href="/">Classified</Link>
       </Logo>
+      <Nav />
     </div>
     <div className="sub-bar">
       <p>search</p>
     </div>
-    <Nav />
   </HeaderStyles>
 );
 
