@@ -32,7 +32,6 @@ a {
     text-decoration: none; 
     color: var(--black);
 }
-}
 button{ 
     font-family: ''
 }
