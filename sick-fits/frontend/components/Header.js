@@ -31,7 +31,6 @@ const HeaderStyles = styled.header`
   }
   .sub-bar {
     margin: 0px 20px;
-    border-bottom: 1px solid var(--red, black);
   }
 `;
 
@@ -44,7 +43,7 @@ const Header = () => (
       <Nav />
     </div>
     <div className="sub-bar">
-      <p>search</p>
+      <p>🕵️‍♂️ search bar here</p>
     </div>
   </HeaderStyles>
 );
