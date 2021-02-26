@@ -1,25 +1,45 @@
-import { useState } from 'react';
-
-const useFormInput = (initValue) => {
-  const [value, setValue] = useState(initValue);
-  const onChangeHandler = (e) => {
-    setValue(e.target.value);
-  };
-  return {
-    value,
-    onChange: onChangeHandler,
-  };
-};
+import useFormInput from '../hooks/useFormInput';
 
 const CreateProduct = () => {
-  const name = useFormInput('tiago');
+  const { inputs, onChange, clearForm, resetForm } = useFormInput({
+    name: 'Tiago',
+    price: 10,
+    description: 'Nice picture',
+  });
+
   return (
-    <form>
-      <label htmlFor="name">
-        Name
-        <input type="text" name="name" id="name" placeholder="Name" {...name} />
-      </label>
-    </form>
+    <>
+      <form>
+        <label htmlFor="name">
+          Name
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="name"
+            value={inputs.name}
+            onChange={onChange}
+          />
+        </label>
+        <label htmlFor="name">
+          Price
+          <input
+            type="number"
+            name="price"
+            id="price"
+            placeholder="price"
+            value={inputs.price}
+            onChange={onChange}
+          />
+        </label>
+        <button type="button" onClick={clearForm}>
+          Clear
+        </button>
+        <button type="button" onClick={resetForm}>
+          Reset
+        </button>
+      </form>
+    </>
   );
 };
 export default CreateProduct;
