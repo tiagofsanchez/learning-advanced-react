@@ -8,7 +8,7 @@ const ErrorStyles = styled.div`
   background: white;
   margin: 2rem 0;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-left: 5px solid red;
+  border-left: 5px solid var(--red);
   p {
     margin: 0;
     font-weight: 100;
@@ -18,7 +18,7 @@ const ErrorStyles = styled.div`
   }
 `;
 
-const DisplayError = ({ error }) => {
+const ErrorMessage = ({ error }) => {
   if (!error || !error.message) return null;
   if (
     error.networkError &&
@@ -44,12 +44,12 @@ const DisplayError = ({ error }) => {
   );
 };
 
-DisplayError.defaultProps = {
+ErrorMessage.defaultProps = {
   error: {},
 };
 
-DisplayError.propTypes = {
+ErrorMessage.propTypes = {
   error: PropTypes.object,
 };
 
-export default DisplayError;
+export default ErrorMessage;
