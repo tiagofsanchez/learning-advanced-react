@@ -39,7 +39,7 @@ const Form = styled.form`
   button,
   input[type='submit'] {
     width: auto;
-    background: red;
+    background: var(--red);
     color: white;
     border: 0;
     font-size: 2rem;
@@ -49,7 +49,6 @@ const Form = styled.form`
   fieldset {
     border: 0;
     padding: 0;
-
     &[disabled] {
       opacity: 0.5;
     }
@@ -59,9 +58,9 @@ const Form = styled.form`
       display: block;
       background-image: linear-gradient(
         to right,
-        #ff3019 0%,
+        var(--red) 0%,
         #e2b04a 50%,
-        #ff3019 100%
+        var(--red) 100%
       );
     }
     &[aria-busy='true']::before {
