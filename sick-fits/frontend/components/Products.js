@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Product from './Product';
 
 export const ALL_PRODUCTS_QUERY = gql`
-  query ALL_PRODUCT_QUERIES {
+  query ALL_PRODUCTS_QUERY {
     allProducts {
       id
       name
