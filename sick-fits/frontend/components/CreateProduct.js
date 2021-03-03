@@ -8,7 +8,6 @@ import { ALL_PRODUCTS_QUERY } from './Products';
 
 const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
-    # Variables that are being passed
     $name: String!
     $description: String!
     $price: Int!
@@ -45,7 +44,7 @@ const CreateProduct = () => {
       refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
     }
   );
-  console.log(data, loading);
+
   return (
     <>
       <Form

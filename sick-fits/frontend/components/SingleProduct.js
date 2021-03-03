@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ErrorMessage from './ErrorMessage';
 
 const SINGLE_ITEM_QUERY = gql`
@@ -54,6 +55,10 @@ const SingleProduct = ({ id }) => {
       </div>
     </ProductStyles>
   );
+};
+
+SingleProduct.propTypes = {
+  id: PropTypes.string,
 };
 
 export default SingleProduct;
