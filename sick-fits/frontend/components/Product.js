@@ -17,7 +17,7 @@ const Product = ({ product }) => (
     <div className="buttonList">
       <Link
         href={{
-          pathname: 'update',
+          pathname: '/update',
           query: {
             id: product.id,
           },

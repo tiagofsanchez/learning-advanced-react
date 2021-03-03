@@ -47,7 +47,8 @@ const UpdateProduct = ({ id }) => {
     variables: { id },
   });
 
-  const { inputs, clearForm, onChange } = useFormInput(data?.Product);
+  const { inputs, onChange } = useFormInput(data?.Product);
+  console.log({ Product: data?.Product, inputs });
 
   const [
     updateProduct,
@@ -65,7 +66,6 @@ const UpdateProduct = ({ id }) => {
             ...inputs,
           },
         }).catch(console.error);
-        console.log(res);
       }}
     >
       <ErrorMessage error={error || updateError} />
@@ -77,7 +77,7 @@ const UpdateProduct = ({ id }) => {
             name="name"
             id="name"
             placeholder="name"
-            value={inputs.name}
+            value={inputs.name || '-'}
             onChange={onChange}
           />
         </label>
@@ -88,7 +88,7 @@ const UpdateProduct = ({ id }) => {
             name="price"
             id="price"
             placeholder="price"
-            value={inputs.price}
+            value={inputs.price || '-'}
             onChange={onChange}
           />
         </label>
@@ -98,7 +98,7 @@ const UpdateProduct = ({ id }) => {
             name="description"
             id="description"
             placeholder="description"
-            value={inputs.description}
+            value={inputs.description || '-'}
             onChange={onChange}
           />
         </label>
