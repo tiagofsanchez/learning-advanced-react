@@ -6,6 +6,7 @@ import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
+import { ALL_PRODUCTS_QUERY } from './Products';
 
 const DELETE_PRODUCT_MUTATION = gql`
   mutation DELETE_PRODUCT_MUTATION($id: ID!) {
@@ -19,6 +20,7 @@ const DELETE_PRODUCT_MUTATION = gql`
 const Product = ({ product }) => {
   const [deleteProduct, { loading }] = useMutation(DELETE_PRODUCT_MUTATION, {
     variables: { id: product.id },
+    refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
   });
 
   if (loading) return <p>loading...</p>;
@@ -45,7 +47,9 @@ const Product = ({ product }) => {
         >
           Edit 💅
         </Link>
-        <button type="button">🧼 delete</button>
+        <button type="button" onClick={() => deleteProduct()}>
+          🧼 delete
+        </button>
       </div>
     </ItemStyles>
   );
