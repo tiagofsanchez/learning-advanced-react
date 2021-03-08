@@ -43,7 +43,7 @@ const SingleProduct = ({ id }) => {
   return (
     <ProductStyles>
       <Head>
-        <title>{Product.name}</title>
+        <title>Classified - {Product.name}</title>
       </Head>
       <img
         src={Product.photo.image.publicUrlTransformed}
