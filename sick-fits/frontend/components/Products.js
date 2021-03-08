@@ -5,12 +5,12 @@ import { perPage } from '../config';
 import Product from './Product';
 
 export const ALL_PRODUCTS_QUERY = gql`
-  query ALL_PRODUCTS_QUERY($first: Int, $skip: Int) {
-    allProducts(first: $first, skip: $skip) {
+  query ALL_PRODUCTS_QUERY($skip: Int = 0, $first: Int) {
+    allProducts(first: $first, skip: $skip, sortBy: name_ASC) {
       id
       name
-      description
       price
+      description
       photo {
         id
         image {
@@ -20,7 +20,6 @@ export const ALL_PRODUCTS_QUERY = gql`
     }
   }
 `;
-
 const ProductListStyle = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -30,8 +29,8 @@ const ProductListStyle = styled.div`
 const Products = ({ page }) => {
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
     variables: {
-      first: page * perPage - page,
-      skip: perPage,
+      skip: page * perPage - perPage,
+      first: perPage,
     },
   });
   if (loading) return <p>Loading...</p>;
