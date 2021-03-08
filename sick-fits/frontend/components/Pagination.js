@@ -31,14 +31,14 @@ const Pagination = ({ page }) => {
           Classified - Page {page} of {pageCount}
         </title>
       </Head>
-      <Link href={`/products/${page - 1}`}>
+      <Link href={`/products/${parseInt(page) - 1}`}>
         <a aria-disabled={page <= 1}>⬅ prev</a>
       </Link>
       <p>
         Page {page} of {pageCount}
       </p>
       <p>{count} items total</p>
-      <Link href={`/products/${page + 1}`}>
+      <Link href={`/products/${parseInt(page) + 1}`}>
         <a aria-disabled={page >= pageCount}> next ➡</a>
       </Link>
     </PaginationStyles>
