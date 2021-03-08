@@ -9,7 +9,7 @@ const ProductsPage = () => {
   return (
     <>
       <Pagination page={page || 1} />
-      <Products />
+      <Products page={page || 1} />
       <Pagination page={page || 1} />
     </>
   );
