@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import gql from 'graphql-tag';
-import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/client';
 import PaginationStyles from './styles/PaginationStyles';
 import ErrorMessage from './ErrorMessage';
@@ -15,6 +14,7 @@ export const ALL_PRODUCTS_PER_PAGE_QUERY = gql`
   }
 `;
 
+// eslint-disable-next-line react/prop-types
 const Pagination = ({ page }) => {
   const { data, loading, error } = useQuery(ALL_PRODUCTS_PER_PAGE_QUERY);
 
@@ -43,10 +43,6 @@ const Pagination = ({ page }) => {
       </Link>
     </PaginationStyles>
   );
-};
-
-Pagination.propTypes = {
-  page: PropTypes.string,
 };
 
 export default Pagination;

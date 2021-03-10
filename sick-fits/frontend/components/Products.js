@@ -26,6 +26,7 @@ const ProductListStyle = styled.div`
   grid-gap: 60px;
 `;
 
+// eslint-disable-next-line react/prop-types
 const Products = ({ page }) => {
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
     variables: {
