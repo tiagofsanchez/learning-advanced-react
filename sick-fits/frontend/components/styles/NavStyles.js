@@ -18,6 +18,7 @@ const NavStyles = styled.ul`
     font-size: 1em;
     cursor: pointer;
     @media (max-width: 700px) {
+      width: 100%;
       font-size: 10px;
       padding: 0 10px;
     }
@@ -27,8 +28,6 @@ const NavStyles = styled.ul`
     }
   }
   @media (max-width: 1300px) {
-    width: 100%;
-    justify-content: center;
     font-size: 1.5rem;
   }
 `;

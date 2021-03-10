@@ -1,6 +1,8 @@
+import SingIn from '../components/SingIn';
+
 const SingInPage = () => (
   <>
-    <p>Signin page</p>
+    <SingIn />
   </>
 );
 export default SingInPage;
