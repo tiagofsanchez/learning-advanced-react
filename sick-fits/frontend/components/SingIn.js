@@ -39,8 +39,6 @@ const SingIn = () => {
     clearForm();
   }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <ErrorMessage error={error} />;
   return (
     <Form method="POST" onSubmit={handleSubmit}>
       <h2>Sing in to your account</h2>

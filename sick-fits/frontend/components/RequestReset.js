@@ -30,12 +30,13 @@ const RequestReset = () => {
     clearForm();
   }
 
-  console.log({ data, error, loading, inputs });
-  if (loading) return <p>Loading...</p>;
   return (
     <Form method="POST" onSubmit={handleSubmit}>
-      <ErrorMessage error={error} />
       <h2>Request a Password Reset</h2>
+      <ErrorMessage error={error} />
+      {data?.sendUserPasswordResetLink === null && (
+        <p>You should have receive and email!</p>
+      )}
       <fieldset aria-disabled={loading} disabled={loading}>
         <label htmlFor="email">
           Email

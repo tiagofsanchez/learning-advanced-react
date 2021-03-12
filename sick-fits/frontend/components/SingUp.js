@@ -37,12 +37,10 @@ const SingUp = () => {
     clearForm();
   }
 
-  console.log(inputs);
-  if (loading) return <p>Loading...</p>;
   return (
     <Form method="POST" onSubmit={handleSubmit}>
-      <ErrorMessage error={error} />
       <h2>Sing up for a new account</h2>
+      <ErrorMessage error={error} />
       <fieldset aria-disabled={loading} disabled={loading}>
         {data?.createUser && (
           <p>
