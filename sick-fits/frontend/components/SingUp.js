@@ -37,12 +37,13 @@ const SingUp = () => {
     clearForm();
   }
 
+  console.log(inputs);
   if (loading) return <p>Loading...</p>;
   return (
     <Form method="POST" onSubmit={handleSubmit}>
       <ErrorMessage error={error} />
+      <h2>Sing up for a new account</h2>
       <fieldset aria-disabled={loading} disabled={loading}>
-        <h2>Sing up for a new account</h2>
         {data?.createUser && (
           <p>
             Welcome! Now you just need to sing in with {data?.createUser.email}
@@ -84,7 +85,7 @@ const SingUp = () => {
             onChange={onChange}
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Sign Up</button>
       </fieldset>
     </Form>
   );

@@ -72,7 +72,7 @@ const SingIn = () => {
             onChange={onChange}
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Sign In</button>
       </fieldset>
     </Form>
   );
