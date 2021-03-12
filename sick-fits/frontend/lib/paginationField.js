@@ -4,7 +4,6 @@ export default function paginationField() {
   return {
     keyArgs: false, // tells apollo we will do all
     read(existing = [], { args, cache }) {
-      console.log({ existing, args, cache });
       const { skip, first } = args;
 
       const data = cache.readQuery({ query: ALL_PRODUCTS_PER_PAGE_QUERY });

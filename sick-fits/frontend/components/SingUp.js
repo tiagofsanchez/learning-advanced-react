@@ -15,6 +15,7 @@ const SIGNUP_USER_MUTATION = gql`
       id
       name
       password_is_set
+      email
     }
   }
 `;
@@ -30,20 +31,23 @@ const SingUp = () => {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  console.log(data);
   async function handleSubmit(e) {
     e.preventDefault();
-    await signUp();
+    await signUp().catch(console.error);
     clearForm();
   }
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <ErrorMessage error={error} />;
   return (
     <Form method="POST" onSubmit={handleSubmit}>
-      <h2>Sing up for a new account</h2>
       <ErrorMessage error={error} />
       <fieldset aria-disabled={loading} disabled={loading}>
+        <h2>Sing up for a new account</h2>
+        {data?.createUser && (
+          <p>
+            Welcome! Now you just need to sing in with {data?.createUser.email}
+          </p>
+        )}
         <label htmlFor="name">
           Name
           <input
