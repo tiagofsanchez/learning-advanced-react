@@ -35,7 +35,7 @@ const RequestReset = () => {
       <h2>Request a Password Reset</h2>
       <ErrorMessage error={error} />
       {data?.sendUserPasswordResetLink === null && (
-        <p>You should have receive and email!</p>
+        <p>Success! You can now sing in</p>
       )}
       <fieldset aria-disabled={loading} disabled={loading}>
         <label htmlFor="email">

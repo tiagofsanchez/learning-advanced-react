@@ -9,6 +9,7 @@ import {
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
+import { CardItem } from './schemas/CardItem';
 import { insertSeedData } from './seed-data';
 
 const databaseURL =
@@ -58,6 +59,7 @@ export default withAuth(
       User,
       Product,
       ProductImage,
+      CardItem,
     }),
     ui: {
       // Show the UI only for poeple who pass this test
