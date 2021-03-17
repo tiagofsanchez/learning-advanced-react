@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styled from 'styled-components';
 import { useUser } from '../hooks/useUser';
 import CartStyles from './styles/CartStyles';
@@ -46,7 +47,6 @@ const CartItem = ({ item }) => {
 const Cart = () => {
   const me = useUser();
   const data = useCart();
-  console.log({ me, data });
   return (
     <CartStyles open={data.cartOpen}>
       <header>

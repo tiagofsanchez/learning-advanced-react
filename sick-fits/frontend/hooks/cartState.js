@@ -6,6 +6,7 @@ const LocalStateProvider = LocalSateContext.Provider;
 // this is my onw custom provider that will keep data accessible everywhere
 // I want that state to be available
 
+// eslint-disable-next-line react/prop-types
 function CartStateProvider({ children }) {
   const [cartOpen, setCartOpen] = useState(true);
 
