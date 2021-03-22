@@ -7,6 +7,7 @@ import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../hooks/cartState';
 import CloseButton from './styles/CloseButton';
+import AddToCart from './AddToCart';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
@@ -39,6 +40,9 @@ const CartItem = ({ item }) => {
             {item.quantity} &times; {formatMoney(product.price)} each
           </em>
         </p>
+      </div>
+      <div>
+        <AddToCart />
       </div>
     </CartItemStyles>
   );
