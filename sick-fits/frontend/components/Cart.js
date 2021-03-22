@@ -8,6 +8,7 @@ import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../hooks/cartState';
 import CloseButton from './styles/CloseButton';
 import AddToCart from './AddToCart';
+import DeleteFromCart from './deleteFromCart';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
@@ -41,6 +42,7 @@ const CartItem = ({ item }) => {
           </em>
         </p>
       </div>
+      <DeleteFromCart id={item.id} />
     </CartItemStyles>
   );
 };
