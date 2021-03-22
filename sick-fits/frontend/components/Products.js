@@ -38,7 +38,7 @@ const Products = ({ page }) => {
   if (error) return <p>Error...</p>;
   return (
     <ProductListStyle>
-      {data.allProducts.map((product) => (
+      {data?.allProducts?.map((product) => (
         <Product key={product.id} product={product} />
       ))}
     </ProductListStyle>

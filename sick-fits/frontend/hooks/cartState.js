@@ -8,7 +8,7 @@ const LocalStateProvider = LocalSateContext.Provider;
 
 // eslint-disable-next-line react/prop-types
 function CartStateProvider({ children }) {
-  const [cartOpen, setCartOpen] = useState(true);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const toggleCart = () => setCartOpen(!cartOpen);
   const closeCart = () => setCartOpen(false);

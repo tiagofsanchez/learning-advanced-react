@@ -4,6 +4,9 @@ import { useUser } from '../hooks/useUser';
 import SignOut from './SingOut';
 import { useCart } from '../hooks/cartState';
 import Button from './styles/Button';
+import CartCount from './cartCount';
+
+const totalItems = (cart) => cart.reduce((acc, item) => acc + item.quantity, 0);
 
 const Nav = () => {
   const user = useUser();
@@ -19,6 +22,7 @@ const Nav = () => {
           <SignOut />
           <Button type="button" onClick={openCart}>
             My Cart
+            <CartCount count={totalItems(user.cart)} />
           </Button>
         </>
       )}
