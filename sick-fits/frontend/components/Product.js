@@ -25,7 +25,7 @@ const Product = ({ product }) => (
           },
         }}
       >
-        <button>Edit 💅</button>
+        <button type="button">Edit 💅</button>
       </Link>
       <AddToCart id={product.id} />
       <DeleteProduct id={product.id}>delete this </DeleteProduct>
