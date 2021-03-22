@@ -7,7 +7,6 @@ import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../hooks/cartState';
 import CloseButton from './styles/CloseButton';
-import AddToCart from './AddToCart';
 import DeleteFromCart from './deleteFromCart';
 
 const CartItemStyles = styled.li`
