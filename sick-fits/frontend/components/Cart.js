@@ -41,9 +41,6 @@ const CartItem = ({ item }) => {
           </em>
         </p>
       </div>
-      <div>
-        <AddToCart />
-      </div>
     </CartItemStyles>
   );
 };
