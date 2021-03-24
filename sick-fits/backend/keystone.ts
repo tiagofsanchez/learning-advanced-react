@@ -8,6 +8,8 @@ import {
 
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
+import { OrderItem } from './schemas/OrderItem';
+import { Order } from './schemas/Order';
 import { ProductImage } from './schemas/ProductImage';
 import { CardItem } from './schemas/CardItem';
 import { insertSeedData } from './seed-data';
@@ -61,6 +63,8 @@ export default withAuth(
       Product,
       ProductImage,
       CardItem,
+      OrderItem,
+      Order,
     }),
     extendGraphqlSchema,
     ui: {
