@@ -15,9 +15,7 @@ function CartStateProvider({ children }) {
   const openCart = () => setCartOpen(true);
 
   return (
-    <LocalStateProvider
-      value={{ cartOpen, setCartOpen, toggleCart, closeCart, openCart }}
-    >
+    <LocalStateProvider value={{ cartOpen, toggleCart, closeCart, openCart }}>
       {children}
     </LocalStateProvider>
   );

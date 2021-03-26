@@ -7,9 +7,11 @@ import {
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import gql from 'graphql-tag';
+import { useRouter } from 'next/router';
 import nProgress from 'nprogress';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useCart } from '../hooks/cartState';
 import SickButton from './styles/SickButton';
 
 const CheckoutFormStyles = styled.form`
@@ -44,6 +46,8 @@ function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
   const [checkout, { error: graphQlError }] = useMutation(CHECKOUT_MUTATION);
+  const { closeCart } = useCart();
+  const router = useRouter();
 
   async function handleSubmit(e) {
     // 1. Stop the form from submitting and turn the loader on.
@@ -73,7 +77,9 @@ function CheckoutForm() {
     console.log(order);
 
     // 6. Change the pages to view the order
+    router.push('/orders');
     // 7. Close the cart
+    closeCart();
     // 8. turn the loader off.
     setLoading(false);
     nProgress.done();
