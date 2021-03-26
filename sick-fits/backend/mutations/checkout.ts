@@ -1,6 +1,7 @@
 import { KeystoneContext } from '@keystone-next/types';
 import {
   CardItemCreateInput,
+  CardItemUpdateInput,
   OrderCreateInput,
 } from '../.keystone/schema-types';
 import stripeConfig from '../lib/stripe';
@@ -56,7 +57,6 @@ async function checkout(
     return tally + cartItem.quantity * cartItem.product.price;
   },
   0);
-  console.log(amount);
 
   // 3. Create the payment with stripe lib
   const charge = await stripeConfig.paymentIntents
@@ -70,8 +70,37 @@ async function checkout(
       console.log(err);
       throw new Error(err.message);
     });
-  // 4. Convert the cardItems to OrderItems
+
+  // 4. Convert the cardItems to orderItems
+  const orderItems = cartItems.map((cartItem: CardItemUpdateInput) => {
+    const orderItem = {
+      name: cartItem.product.name,
+      description: cartItem.product.description,
+      price: cartItem.product.price,
+      quantity: cartItem.quantity,
+      photo: { connect: { id: cartItem.product.photo.id } },
+    };
+    return orderItem;
+  });
+
   // 5. Create the order and return it
+  const order = await context.lists.Order.createOne({
+    data: {
+      total: charge.amount,
+      items: { create: orderItems },
+      user: { connect: { id: userId } },
+      charge: charge.id,
+    },
+    resolveFields: false,
+  });
+
+  // 6. Clean the cart after all is done
+  const cartItemIds = cartItems.map((cartItem) => cartItem.id);
+  await context.lists.CardItem.deleteMany({
+    ids: cartItemIds,
+  });
+
+  return order;
 }
 
 export default checkout;
