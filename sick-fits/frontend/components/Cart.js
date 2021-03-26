@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { useUser } from '../hooks/useUser';
 import CartStyles from './styles/CartStyles';
 import Supreme from './styles/Supreme';
@@ -30,21 +30,25 @@ const CartItem = ({ item }) => {
     <CartItemStyles>
       <img
         width="100"
-        src={product.photo.image.publicUrlTransformed}
-        alt={product.name}
+        src={product?.photo.image.publicUrlTransformed}
+        alt={product?.name}
       />
       <div>
-        <h3>{product.name}</h3>
+        <h3>{product?.name}</h3>
         <p>
-          {formatMoney(product.price * item.quantity)} -{' '}
+          {formatMoney(product?.price * item.quantity)} -{' '}
           <em>
-            {item.quantity} &times; {formatMoney(product.price)} each
+            {item.quantity} &times; {formatMoney(product?.price)} each
           </em>
         </p>
       </div>
       <DeleteFromCart id={item.id} />
     </CartItemStyles>
   );
+};
+
+CartItem.propTypes = {
+  item: PropTypes.object,
 };
 
 const Cart = () => {
@@ -59,9 +63,11 @@ const Cart = () => {
         &times;
       </CloseButton>
       <ul>
-        {me?.cart.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
+        {me?.cart
+          .filter((cartItem) => cartItem.product)
+          .map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
       </ul>
       <footer>
         <p>{formatMoney(calcTotalPrice(me?.cart))}</p>
