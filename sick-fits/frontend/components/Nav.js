@@ -11,6 +11,7 @@ const totalItems = (cart) => cart.reduce((acc, item) => acc + item.quantity, 0);
 const Nav = () => {
   const user = useUser();
   const { openCart } = useCart();
+
   return (
     <NaveStyles>
       <Link href="/products">Products</Link>
@@ -22,7 +23,11 @@ const Nav = () => {
           <SignOut />
           <Button type="button" onClick={openCart}>
             My Cart
-            <CartCount count={totalItems(user.cart)} />
+            <CartCount
+              count={totalItems(
+                user.cart.filter((cartItem) => cartItem.product)
+              )}
+            />
           </Button>
         </>
       )}
