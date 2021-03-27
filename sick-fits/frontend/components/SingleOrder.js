@@ -31,12 +31,12 @@ const SINGLE_ORDER_QUERY = gql`
   }
 `;
 
-const OrderItems = ({ id }) => {
+const SingleOrder = ({ id }) => {
   const { data, error, loading } = useQuery(SINGLE_ORDER_QUERY, {
     variables: { id },
   });
 
-  const { order } = data;
+  console.log({ id, data, error, loading });
 
   if (error) return <ErrorMessage error={error} />;
   if (loading) return <p>Loading...</p>;
@@ -44,22 +44,22 @@ const OrderItems = ({ id }) => {
     <OrderStyles>
       <p>
         <span>Order Id:</span>
-        <span>{order.id}</span>
+        <span>{data.order.id}</span>
       </p>
       <p>
         <span>Order Charge:</span>
-        <span>{order.charge}</span>
+        <span>{data.order.charge}</span>
       </p>
       <p>
         <span>Order Total:</span>
-        <span>{formatMoney(order.total)}</span>
+        <span>{formatMoney(data.order.total)}</span>
       </p>
       <p>
         <span>Items:</span>
-        <span>{order.items.length}</span>
+        <span>{data.order.items.length}</span>
       </p>
       <div className="items">
-        {order?.items?.map((orderItem) => (
+        {data.order?.items?.map((orderItem) => (
           <div className="order-item" key={orderItem.id}>
             <img
               width="200"
@@ -82,4 +82,4 @@ const OrderItems = ({ id }) => {
   );
 };
 
-export default OrderItems;
+export default SingleOrder;
