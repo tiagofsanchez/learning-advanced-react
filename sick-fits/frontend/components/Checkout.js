@@ -80,7 +80,11 @@ function CheckoutForm() {
     });
 
     // 6. Change the pages to view the order
-    router.push('/orders');
+    router.push({
+      pathname: `/order/[id]`,
+      query: { id: order.data.checkout.id },
+    });
+
     // 7. Close the cart
     closeCart();
     // 8. turn the loader off.
