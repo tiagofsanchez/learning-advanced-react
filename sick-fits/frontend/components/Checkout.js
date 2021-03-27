@@ -12,6 +12,7 @@ import nProgress from 'nprogress';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useCart } from '../hooks/cartState';
+import { CURRENT_USER_QUERY } from '../hooks/useUser';
 import SickButton from './styles/SickButton';
 
 const CheckoutFormStyles = styled.form`
@@ -73,8 +74,10 @@ function CheckoutForm() {
     }
 
     // 5. Send the token from (3) to our keystone with a custom mutation
-    const order = await checkout({ variables: { token: paymentMethod.id } });
-    console.log(order);
+    const order = await checkout({
+      variables: { token: paymentMethod.id },
+      refetchQueries: [{ query: CURRENT_USER_QUERY }],
+    });
 
     // 6. Change the pages to view the order
     router.push('/orders');
