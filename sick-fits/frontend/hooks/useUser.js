@@ -25,6 +25,8 @@ export const CURRENT_USER_QUERY = gql`
         }
         orders {
           id
+          label
+          total
           items {
             id
             name

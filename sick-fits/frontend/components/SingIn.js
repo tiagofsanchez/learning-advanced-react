@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import { useRouter } from 'next/router';
 import useFormInput from '../hooks/useFormInput';
 import { CURRENT_USER_QUERY } from '../hooks/useUser';
 import ErrorMessage from './ErrorMessage';
@@ -32,10 +33,11 @@ const SingIn = () => {
     variables: inputs,
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
-
+  const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
     await signin();
+    router.push({ pathname: '/' });
     clearForm();
   }
 
