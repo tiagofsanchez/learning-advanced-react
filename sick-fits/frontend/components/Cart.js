@@ -30,7 +30,7 @@ const CartItem = ({ item }) => {
     <CartItemStyles>
       <img
         width="100"
-        src={product?.photo.image.publicUrlTransformed}
+        src={product?.photo?.image?.publicUrlTransformed}
         alt={product?.name}
       />
       <div>

@@ -12,15 +12,27 @@ const DELETE_PRODUCT_MUTATION = gql`
   }
 `;
 
+const DELETE_PRODUCTIMAGE_MUTATION = gql`
+  mutation DELETE_PRODUCTIMAGE_MUTATION($id: ID!) {
+    deleteProductImage(id: $id) {
+      id
+    }
+  }
+`;
+
 // evicting the deleted product from the cache
 const update = (cache, payload) => {
   cache.evict(cache.identify(payload.data.deleteProduct));
 };
 
-const DeleteProduct = ({ id, children }) => {
+const DeleteProduct = ({ id, children, productId }) => {
+  console.log(productId);
   const [deleteProduct, { loading }] = useMutation(DELETE_PRODUCT_MUTATION, {
     variables: { id },
     update,
+  });
+  const [deleteProductImage] = useMutation(DELETE_PRODUCTIMAGE_MUTATION, {
+    variables: { id: productId },
   });
 
   if (loading) return <p>loading...</p>;
@@ -30,7 +42,8 @@ const DeleteProduct = ({ id, children }) => {
       disabled={loading}
       onClick={() => {
         if (confirm('Are you sure you want to delete that product?')) {
-          return deleteProduct();
+          deleteProductImage();
+          deleteProduct();
         }
       }}
     >
@@ -41,7 +54,8 @@ const DeleteProduct = ({ id, children }) => {
 
 DeleteProduct.propTypes = {
   id: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.array,
+  productId: PropTypes.string,
 };
 
 export default DeleteProduct;
