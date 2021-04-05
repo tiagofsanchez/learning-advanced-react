@@ -12,6 +12,8 @@ import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
 import { ProductImage } from './schemas/ProductImage';
 import { CardItem } from './schemas/CardItem';
+import { Role } from './schemas/Role';
+
 import { insertSeedData } from './seed-data';
 import { extendGraphqlSchema } from './mutations';
 
@@ -29,7 +31,7 @@ const { withAuth } = createAuth({
   secretField: 'password',
   initFirstItem: {
     fields: ['name', 'email', 'password'],
-    // TODO: Add in inital roles here
+    // TODO: Add in initial roles here
   },
   // this will provide the token for the reset password link to be send out to the user
   passwordResetLink: {
@@ -65,6 +67,7 @@ export default withAuth(
       CardItem,
       OrderItem,
       Order,
+      Role,
     }),
     extendGraphqlSchema,
     ui: {
