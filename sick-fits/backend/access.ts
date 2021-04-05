@@ -37,6 +37,26 @@ export const rules = {
     return { user: { id: session.itemId } };
   },
 
+  canOrder({ session }: ListAccessArgs): true | { user: { id: string } } {
+    // 1. Do they have permission
+    if (permissions.canManageOrders({ session })) {
+      return true;
+    }
+    // 2. If not, do they own the product
+    return { user: { id: session.itemId } };
+  },
+
+  canManageOrderItems({
+    session,
+  }: ListAccessArgs): true | { order: { user: { id: string } } } {
+    // 1. Do they have permission
+    if (permissions.canManageOrders({ session })) {
+      return true;
+    }
+    // 2. If not, do they own the product
+    return { order: { user: { id: session.itemId } } };
+  },
+
   // here if the user can not update and delete products, the user will only read
   // products that are available
   canReadProducts({ session }: ListAccessArgs): true | { status: string } {
