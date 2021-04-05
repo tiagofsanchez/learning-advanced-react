@@ -37,9 +37,14 @@ export const rules = {
     return { user: { id: session.itemId } };
   },
 
-  canOrder({ session }: ListAccessArgs): true | { user: { id: string } } {
+  canOrder({ session }: ListAccessArgs) {
+    // if user not signedIn this is important to manage response
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+
     // 1. Do they have permission
-    if (permissions.canManageOrders({ session })) {
+    if (permissions.canManageCart({ session })) {
       return true;
     }
     // 2. If not, do they own the product
