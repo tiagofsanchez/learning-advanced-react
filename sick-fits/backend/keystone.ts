@@ -16,6 +16,7 @@ import { Role } from './schemas/Role';
 
 import { insertSeedData } from './seed-data';
 import { extendGraphqlSchema } from './mutations';
+import { permissionsList } from './schemas/fields';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
@@ -78,7 +79,7 @@ export default withAuth(
     },
     session: withItemData(statelessSessions(sessionConfig), {
       // GraphQL Query
-      User: 'id name email',
+      User: `id name email role { ${permissionsList.join(' ')} }`,
     }),
   })
 );

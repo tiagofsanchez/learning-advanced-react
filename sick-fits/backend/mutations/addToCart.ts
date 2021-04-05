@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
+/* eslint-disable no-return-await */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { KeystoneContext } from '@keystone-next/types';
 import { CardItemCreateInput } from '../.keystone/schema-types';
 import { Session } from '../types';
@@ -26,7 +30,7 @@ async function addToCart(
       `There are already ${existingCartItem.quantity}, increment by 1!`
     );
     // 3. See if the current item is in their cart
-    // 4. if itis, increment by 1
+    // 4. if it is, increment by 1
     return await context.lists.CardItem.updateOne({
       id: existingCartItem.id,
       data: { quantity: existingCartItem.quantity + 1 },
