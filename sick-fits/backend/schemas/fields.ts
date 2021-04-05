@@ -29,6 +29,7 @@ export const permissionFields = {
 
 export type Permission = keyof typeof permissionFields;
 
+// if this sounds strange to you it is because it is typescript
 export const permissionsList: Permission[] = Object.keys(
   permissionFields
 ) as Permission[];
