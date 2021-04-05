@@ -24,8 +24,10 @@ It will be hard to capture all the things that I am have learnt through this cou
 
 ## Keystone:
 
+
+- **Writing custom graphQl mutations**: creating mutations that are totally customizable so that the user user can have a better experience. The best example that we will find here is the `addToCart` custom mutation;
 - **Role control in user sessions**: control user roles on the individual sessions of the user by defining it on the backend and consuming in on the different user sessions. This is typically managed by the permissions at the user level; 
-- **Rule based functions**: logical functions to list access, for example the owner of a given product and the admin will be the only 2 user roles that can actually update and delete a given product
+- **Rule based functions**: logical functions to list access, for example the owner of a given product and the admin will be the only 2 user roles that can actually update and delete a given product;
 
 
 

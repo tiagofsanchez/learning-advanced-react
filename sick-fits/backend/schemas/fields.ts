@@ -1,5 +1,7 @@
 import { checkbox } from '@keystone-next/fields';
 
+// This fields are the backend UI fields that are important to create the
+// role permissions we need
 export const permissionFields = {
   canManageProducts: checkbox({
     defaultValue: false,
