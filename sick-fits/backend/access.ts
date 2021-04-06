@@ -38,7 +38,7 @@ export const rules = {
   },
 
   canOrder({ session }: ListAccessArgs) {
-    // if user not signedIn this is important to manage response
+    // if user not signedIn this is important to manage the API response
     if (!isSignedIn({ session })) {
       return false;
     }
@@ -71,5 +71,19 @@ export const rules = {
     }
     // 2. If not, do they own the product
     return { status: 'AVAILABLE' };
+  },
+
+  canManageUsers({ session }: ListAccessArgs) {
+    // if user not signedIn this is important to manage the API response
+    if (!isSignedIn({ session })) {
+      return false;
+    }
+
+    // 1. Do they have permission
+    if (permissions.canManageUsers({ session })) {
+      return true;
+    }
+    // 2. If not can they do it themselves
+    return { id: session.itemId };
   },
 };
