@@ -1,8 +1,11 @@
 import React from 'react';
+import IsUserSignIn from '../components/IsUserSignIn';
 
 const AccountPage = () => (
   <>
-    <p>Account page</p>
+    <IsUserSignIn>
+      <p>Account page</p>
+    </IsUserSignIn>
   </>
 );
 
